@@ -11,8 +11,14 @@ El sistema esta compuesto por las siguientes tablas principales:
 Modelo de Base de Datos
 Entidades Iniciales
 
+1. Categoría
+id
 
-1. Menu
+nombre
+
+descripcion
+
+2. Producto
 
 id
 
@@ -28,7 +34,7 @@ usuarioRegistro
 
 fechaRegistro
 
-2. Cliente
+3. Cliente
 
 id
 
@@ -48,7 +54,7 @@ usuarioRegistro
 
 fechaRegistro
 
-3. Empleado
+4. Empleado
 
 id
 
@@ -68,7 +74,7 @@ usuarioRegistro
 
 fechaRegistro
 
-4. Usuario
+5. Usuario
 
 id
 
@@ -82,7 +88,7 @@ usuarioRegistro
 
 fechaRegistro
 
-5. Venta
+6. Venta
 
 id
 
@@ -102,7 +108,7 @@ usuarioRegistro
 
 fechaRegistro
 
-6. VentaDetalle
+7. VentaDetalle
 
 id
 
@@ -119,3 +125,10 @@ subtotal
 usuarioRegistro
 
 fechaRegistro
+
+Categoria (1) ────< (N) Producto
+Empleado (1) ──── (1) Usuario
+Cliente (1) ────< (N) Venta
+Usuario (1) ────< (N) Venta
+Venta (1) ────< (N) VentaDetalle
+Producto (1) ────< (N) VentaDetalle
