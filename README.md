@@ -12,6 +12,7 @@ Modelo de Base de Datos
 Entidades Iniciales
 
 1. Categoría
+
 id
 
 nombre
@@ -21,6 +22,8 @@ descripcion
 2. Producto
 
 id
+
+idCategoria
 
 nombre
 
@@ -127,8 +130,14 @@ usuarioRegistro
 fechaRegistro
 
 Categoria (1) ────< (N) Producto
+
 Empleado (1) ──── (1) Usuario
+
 Cliente (1) ────< (N) Venta
+
 Usuario (1) ────< (N) Venta
+
 Venta (1) ────< (N) VentaDetalle
+
 Producto (1) ────< (N) VentaDetalle
+
