@@ -4,9 +4,12 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CategoriasModule } from './categorias/categorias.module';
+import { EmpleadosModule } from './empleados/empleados.module';
+import { UsuariosModule } from './usuarios/usuarios.module';
 
 @Module({
-  imports: [ConfigModule.forRoot(),
+  imports: [
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: process.env.DB_HOST,
@@ -19,6 +22,8 @@ import { CategoriasModule } from './categorias/categorias.module';
       autoLoadEntities: true,
     }),
     CategoriasModule,
+    EmpleadosModule,
+    UsuariosModule,
   ],
   controllers: [AppController],
   providers: [AppService],
