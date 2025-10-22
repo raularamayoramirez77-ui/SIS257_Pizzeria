@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import {
   IsDate,
   IsDefined,
@@ -8,10 +9,12 @@ import {
 } from 'class-validator';
 
 export class CreateUsuarioDto {
+  @ApiProperty()
   @IsDefined({ message: 'El campo id del genero debe estar definido' })
   @IsInt({ message: 'El campo id del genero debe ser numérico' })
   readonly idEmpleado: number;
 
+  @ApiProperty()
   @IsNotEmpty({ message: 'El campo usuario es obligatorio' })
   @IsString({ message: 'El campo  usuario debe ser un numero entero' })
   @MaxLength(50, {
@@ -19,6 +22,7 @@ export class CreateUsuarioDto {
   })
   readonly usuario: string;
 
+  @ApiProperty()
   @IsNotEmpty({ message: 'El campo clave es obligatorio' })
   @IsString({ message: 'El campo clave debe ser un numero entero' })
   @MaxLength(100, {
