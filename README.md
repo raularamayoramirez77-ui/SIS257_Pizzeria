@@ -15,8 +15,6 @@ Entidades Iniciales
 
 id
 
-nombre
-
 descripcion
 
 2. Producto
@@ -27,15 +25,9 @@ idCategoria
 
 nombre
 
-descripcion
-
 precioVenta
 
 stock
-
-usuarioRegistro
-
-fechaRegistro
 
 3. Cliente
 
@@ -53,10 +45,6 @@ celular
 
 correoElectronico
 
-usuarioRegistro
-
-fechaRegistro
-
 4. Empleado
 
 id
@@ -73,10 +61,6 @@ celular
 
 cargo
 
-usuarioRegistro
-
-fechaRegistro
-
 5. Usuario
 
 id
@@ -86,10 +70,6 @@ idEmpleado
 usuario
 
 clave
-
-usuarioRegistro
-
-fechaRegistro
 
 6. Venta
 
@@ -107,10 +87,6 @@ montoCambio
 
 montoTotal
 
-usuarioRegistro
-
-fechaRegistro
-
 7. VentaDetalle
 
 id
@@ -125,9 +101,8 @@ precioUnitario
 
 subtotal
 
-usuarioRegistro
 
-fechaRegistro
+
 
 Categoria (1) ────< (N) Producto
 
