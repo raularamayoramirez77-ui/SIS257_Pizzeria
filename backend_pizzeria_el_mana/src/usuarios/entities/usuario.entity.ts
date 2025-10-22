@@ -2,10 +2,12 @@ import { Empleado } from 'src/empleados/entities/empleado.entity';
 import {
   Column,
   CreateDateColumn,
+  DeleteDateColumn,
   Entity,
   JoinColumn,
   OneToOne,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity('usuarios')
@@ -16,26 +18,26 @@ export class Usuario {
   @Column('int', { name: 'id_empleado' })
   idEmpleado: number;
 
-  @Column('varchar', { length: 50, name: 'Usuario' })
+  @Column('varchar', { length: 50 })
   usuario: string;
 
-  @Column('varchar', { length: 100, name: 'Clave' })
+  @Column('varchar', { length: 100 })
   clave: string;
 
-  @Column('varchar', { length: 50, name: 'Usuario_registro' })
+  @Column('varchar', { length: 50 })
   usuarioRegistro: string;
-
-  @Column('date')
-  fechaRegistro: Date;
 
   @CreateDateColumn({ name: 'fecha_creacion' })
   fechaCreacion: Date;
 
-  @CreateDateColumn({ name: 'fecha_modificacion' })
+  @UpdateDateColumn({ name: 'fecha_modificacion' })
   fechaModificacion: Date;
 
-  @CreateDateColumn({ name: 'fecha_eliminacion' })
+  @DeleteDateColumn({ name: 'fecha_eliminacion' })
   fechaEliminacion: Date;
+
+  @Column({ type: 'smallint', default: 1 })
+  estado: number;
 
   @OneToOne(() => Empleado, (empleado) => empleado.usuario)
   @JoinColumn({ name: 'id_empleado', referencedColumnName: 'id' })

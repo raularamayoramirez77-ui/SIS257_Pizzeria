@@ -6,6 +6,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CategoriasModule } from './categorias/categorias.module';
 import { EmpleadosModule } from './empleados/empleados.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
+import { ProductosModule } from './productos/productos.module';
+import { ClientesModule } from './clientes/clientes.module';
 
 @Module({
   imports: [
@@ -17,13 +19,15 @@ import { UsuariosModule } from './usuarios/usuarios.module';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [__dirname + '*/**/*.entity{ts|js}'],
+      entities: [__dirname + '/**/*.entity{ts,js}'],
       synchronize: true,
       autoLoadEntities: true,
     }),
     CategoriasModule,
     EmpleadosModule,
     UsuariosModule,
+    ProductosModule,
+    ClientesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

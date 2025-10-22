@@ -1,22 +1,35 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn, PrimaryGeneratedColumn} from "typeorm";
+import { Producto } from 'src/productos/entities/producto.entity';
+import {
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryColumn,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity('categorias')
 export class Categoria {
-    @PrimaryGeneratedColumn('identity')
-    id: number;
+  @PrimaryGeneratedColumn('identity')
+  id: number;
 
-    @Column('varchar',{length:50, name:'Nombre'})
-    nombre: string;
-    
-    @Column('varchar',{length:200, name:'Descripcion'})
-    descripcion: string;
+  @Column('varchar', { length: 200 })
+  descripcion: string;
 
-    @CreateDateColumn({ name: 'fecha_creacion'})
-    fechaCreacion: Date;
+  @CreateDateColumn({ name: 'fecha_creacion' })
+  fechaCreacion: Date;
 
-    @CreateDateColumn({ name: 'fecha_modificacion'})
-    fechaModificacion: Date;
+  @UpdateDateColumn({ name: 'fecha_modificacion' })
+  fechaModificacion: Date;
 
-    @CreateDateColumn({ name: 'fecha_eliminacion'})
-    fechaEliminacion: Date;
+  @DeleteDateColumn({ name: 'fecha_eliminacion' })
+  fechaEliminacion: Date;
+
+  @Column({ type: 'smallint', default: 1 })
+  estado: number;
+
+  @OneToMany(() => Producto, (producto) => producto.categoria)
+  productos: Producto[];
 }
