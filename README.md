@@ -37,7 +37,9 @@ cedulaIdentidad
 
 nombres
 
-apellidos
+primerApellido
+
+segundoApellido
 
 direccion
 
