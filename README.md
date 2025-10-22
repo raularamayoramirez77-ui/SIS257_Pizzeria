@@ -12,9 +12,8 @@ Modelo de Base de Datos
 Entidades Iniciales
 
 1. Categoría
-id
 
-nombre
+id
 
 descripcion
 
@@ -22,17 +21,13 @@ descripcion
 
 id
 
-nombre
+idCategoria
 
-descripcion
+nombre
 
 precioVenta
 
 stock
-
-usuarioRegistro
-
-fechaRegistro
 
 3. Cliente
 
@@ -42,17 +37,15 @@ cedulaIdentidad
 
 nombres
 
-apellidos
+primerApellido
+
+segundoApellido
 
 direccion
 
 celular
 
 correoElectronico
-
-usuarioRegistro
-
-fechaRegistro
 
 4. Empleado
 
@@ -70,10 +63,6 @@ celular
 
 cargo
 
-usuarioRegistro
-
-fechaRegistro
-
 5. Usuario
 
 id
@@ -83,10 +72,6 @@ idEmpleado
 usuario
 
 clave
-
-usuarioRegistro
-
-fechaRegistro
 
 6. Venta
 
@@ -104,10 +89,6 @@ montoCambio
 
 montoTotal
 
-usuarioRegistro
-
-fechaRegistro
-
 7. VentaDetalle
 
 id
@@ -122,13 +103,18 @@ precioUnitario
 
 subtotal
 
-usuarioRegistro
 
-fechaRegistro
+
 
 Categoria (1) ────< (N) Producto
+
 Empleado (1) ──── (1) Usuario
+
 Cliente (1) ────< (N) Venta
+
 Usuario (1) ────< (N) Venta
+
 Venta (1) ────< (N) VentaDetalle
+
 Producto (1) ────< (N) VentaDetalle
+
