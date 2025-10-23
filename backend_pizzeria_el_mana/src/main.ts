@@ -11,16 +11,18 @@ async function bootstrap() {
   app.enableVersioning({ type: VersioningType.URI, defaultVersion: '1' });
   app.enableCors();
 
-    const config = new DocumentBuilder()
+  const config = new DocumentBuilder()
     .setTitle('API Rest labPizzeria SIS257')
     .setDescription('API REST SIS257 Laboratorio')
     .setVersion('1.0')
-    .addTag('categorias,clientes,empleados,productos,usuarios')
+    .addTag(' labPizzeria ')
     .build();
-  const documentFactory = () => SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('apidoc', app, documentFactory);
 
-  await app.listen(process.env.PORT ?? 3000);
-  console.log(`App corriendo en: ${await app.getUrl()}`);
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('apidoc', app, document);
+
+  await app.listen(process.env.PORT || 3000);
+  console.log(`App corriendo en ${await app.getUrl()}/apidoc`);
 }
+
 bootstrap();
