@@ -25,9 +25,6 @@ export class Cliente {
 
     @Column('varchar', { length: 200})
     correoElectronico: string;
-
-    @Column('varchar', { length: 40 })
-    usuarioRegistro: string;
     
     @CreateDateColumn({ name: 'fecha_creacion' })
     fechaCreacion: Date;

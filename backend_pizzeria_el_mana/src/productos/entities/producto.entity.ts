@@ -27,9 +27,6 @@ export class Producto {
   @Column('int', { default: 0 })
   stock: number;
 
-  @Column('varchar', { length: 40 })
-  usuarioRegistro: string;
-
   @CreateDateColumn({ name: 'fecha_creacion' })
   fechaCreacion: Date;
 

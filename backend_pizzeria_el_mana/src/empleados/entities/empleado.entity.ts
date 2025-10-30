@@ -32,8 +32,7 @@ export class Empleado {
   @Column('varchar', { length: 50 })
   cargo: string;
 
-  @Column('varchar', { length: 50 })
-  usuarioRegistro: string;
+ 
 
   @CreateDateColumn({ name: 'fecha_creacion' })
   fechaCreacion: Date;
