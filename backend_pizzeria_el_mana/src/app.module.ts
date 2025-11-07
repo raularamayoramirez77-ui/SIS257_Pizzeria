@@ -1,15 +1,19 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { APP_GUARD } from '@nestjs/core';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ConfigModule } from '@nestjs/config';
-import { TypeOrmModule } from '@nestjs/typeorm';  
-import { CategoriasModule } from './categorias/categorias.module';
 import { EmpleadosModule } from './empleados/empleados.module';
-import { UsuariosModule } from './usuarios/usuarios.module';
+import { CategoriasModule } from './categorias/categorias.module';
 import { ProductosModule } from './productos/productos.module';
-import { ClientesModule } from './clientes/clientes.module';
-import { VentaModule } from './venta/venta.module';
-import { VentaDetallesModule } from './venta-detalles/venta-detalles.module';
+import { VentasModule } from './ventas/ventas.module';
+import { DetalleVentasModule } from './detalle-ventas/detalle-ventas.module';
+import { AuthModule } from './auth/auth.module';
+import { TamañosModule } from './tamaños/tamaños.module';
+import { IngredientesModule } from './ingredientes/ingredientes.module';
+import { ProductoIngredientesModule } from './producto-ingredientes/producto-ingredientes.module';
+import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 
 @Module({
   imports: [
@@ -21,19 +25,27 @@ import { VentaDetallesModule } from './venta-detalles/venta-detalles.module';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [__dirname + '/**/*.entity{ts,js}'],
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
       autoLoadEntities: true,
     }),
-    CategoriasModule,
     EmpleadosModule,
-    UsuariosModule,
+    CategoriasModule,
     ProductosModule,
-    ClientesModule,
-    VentaModule,
-    VentaDetallesModule,
+    VentasModule,
+    DetalleVentasModule,
+    AuthModule,
+    TamañosModule,
+    IngredientesModule,
+    ProductoIngredientesModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
+    },
+  ],
 })
 export class AppModule {}

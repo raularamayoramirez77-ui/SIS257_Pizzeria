@@ -1,28 +1,39 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import { ValidationPipe, VersioningType } from '@nestjs/common';
+import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  app.useGlobalPipes(new ValidationPipe());
-  app.setGlobalPrefix('api');
-  app.enableVersioning({ type: VersioningType.URI, defaultVersion: '1' });
   app.enableCors();
+  app.setGlobalPrefix('api/v1');
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      transform: true,
+    }),
+  );
 
   const config = new DocumentBuilder()
-    .setTitle('API Rest labPizzeria SIS257')
-    .setDescription('API REST SIS257 Laboratorio')
+    .setTitle('API Pizzeria')
+    .setDescription('API REST para gestión de pizzeria y ventas')
     .setVersion('1.0')
-    .addTag(' labPizzeria ')
+    .addTag('auth')
+    .addTag('empleados')
+    .addTag('categorias')
+    .addTag('productos')
+    .addTag('ingredientes')
+    .addTag('producto-ingredientes')
+    .addTag('ventas')
+    .addTag('detalle-ventas')
+    .addBearerAuth({ type: 'http', scheme: 'bearer', bearerFormat: 'JWT', in: 'header' })
     .build();
-
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('apidoc', app, document);
 
-  await app.listen(process.env.PORT || 3000);
+  await app.listen(process.env.PORT ?? 3000);
   console.log(`App corriendo en ${await app.getUrl()}/apidoc`);
 }
-
 bootstrap();
