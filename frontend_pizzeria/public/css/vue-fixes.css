@@ -1,0 +1,54 @@
+/* ===================================
+   CORRECCIONES DE VISIBILIDAD PARA DASHBOARD
+   =================================== */
+
+/* Asegurar que todos los títulos h2 sean visibles */
+.container-fluid h2 {
+  color: #2c3e50 !important;
+  font-weight: 600 !important;
+}
+
+/* Asegurar que los párrafos descriptivos sean visibles */
+.container-fluid h2 + p.text-muted {
+  color: #6c757d !important;
+}
+
+/* Inputs de búsqueda visibles */
+.form-control,
+input[type="text"],
+input[type="search"] {
+  color: #2c3e50 !important;
+  background-color: #ffffff !important;
+}
+
+.form-control::placeholder {
+  color: #95a5a6 !important;
+  opacity: 1 !important;
+}
+
+/* Selects visibles */
+select.form-control,
+.form-select {
+  color: #2c3e50 !important;
+  background-color: #ffffff !important;
+}
+
+/* Asegurar que el texto en tablas sea visible */
+.table td,
+.table th {
+  color: #2c3e50 !important;
+}
+
+/* Labels y texto general en formularios */
+label,
+.form-label {
+  color: #2c3e50 !important;
+  font-weight: 500 !important;
+}
+
+/* Texto en cards */
+.card-body,
+.card-text,
+.card-title {
+  color: #2c3e50 !important;
+}

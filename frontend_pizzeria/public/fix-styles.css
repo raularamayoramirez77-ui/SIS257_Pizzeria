@@ -1,0 +1,304 @@
+/* ====================================
+   FIX PARA VUE + TEMPLATE PIZZA
+   Este archivo corrige problemas de layout
+   ==================================== */
+
+/* Reset completo para evitar conflictos */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  overflow-x: hidden !important;
+  height: auto !important;
+}
+
+#app {
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  display: block !important;
+  grid-template-columns: unset !important;
+}
+
+/* Asegurar que no haya estilos de otros templates */
+.slider_area,
+.slider_active, 
+.single_slider,
+.best_burgers_area,
+.Burger_President_area,
+.about_area,
+.video_area,
+.testimonial_area,
+.instragram_area,
+.header-area {
+  display: none !important; /* Ocultar elementos de otros templates */
+}
+
+/* ====================================
+   FIX 1: Sección "Bienvenido a Pizza"
+   LADO A LADO: Imagen 50% | Texto 50%
+   ==================================== */
+.ftco-about {
+  display: flex !important; /* Mantener flex para lado a lado */
+  flex-direction: row !important; /* En fila horizontal */
+  width: 100% !important;
+  align-items: stretch !important;
+}
+
+.ftco-about .one-half {
+  width: 50% !important; /* Cada uno ocupa 50% */
+  padding: 5% !important;
+  display: block !important;
+  float: none !important;
+}
+
+.ftco-about .one-half.img {
+  min-height: 500px !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+/* ====================================
+   FIX 2: Sección de información con iconos
+   Info y redes sociales LADO A LADO (50% cada uno)
+   Pero dentro de cada sección, el contenido en COLUMNAS
+   ==================================== */
+.ftco-intro .wrap {
+  display: flex !important; /* Mantener flex para que estén lado a lado */
+  flex-direction: row !important; /* En fila (horizontal) */
+  width: 100% !important;
+}
+
+.ftco-intro .wrap .info {
+  width: calc(100% - 35%) !important; /* Mismo ancho que el template original */
+  background: #000 !important;
+  padding: 2% 5% 2% 12% !important; /* Padding del template original */
+  display: block !important;
+  float: none !important;
+}
+
+/* FIX 2.1: Hacer que la información interna sea en FILA (uno al lado del otro) */
+.ftco-intro .wrap .info .row {
+  display: flex !important;
+  flex-direction: row !important;
+  width: 100% !important;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  flex-wrap: nowrap !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.ftco-intro .wrap .info .col-md-4 {
+  width: auto !important;
+  max-width: none !important;
+  margin-bottom: 0 !important;
+  display: flex !important;
+  flex-direction: row !important; /* Icono y texto en fila horizontal */
+  align-items: flex-start !important;
+  padding-left: 0 !important;
+  padding-right: 30px !important;
+  flex: 0 1 auto !important;
+}
+
+.ftco-intro .wrap .info .col-md-4 .icon {
+  margin-right: 10px !important;
+  flex-shrink: 0 !important;
+  width: 40px !important;
+}
+
+.ftco-intro .wrap .info .col-md-4 .text {
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+.ftco-intro .wrap .info .col-md-4 .text h3 {
+  font-size: 16px !important;
+  line-height: 1.2 !important;
+  margin-bottom: 5px !important;
+}
+
+.ftco-intro .wrap .info .col-md-4 .text p {
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+}
+
+/* FIX 2.2: Sección de redes sociales al LADO (35% del ancho) */
+.ftco-intro .wrap .social {
+  width: 35% !important; /* Mismo ancho que el template original */
+  background: #fac564 !important;
+  padding: 30px !important;
+  padding-left: 50px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+}
+
+.ftco-intro .wrap .social .social-icon {
+  display: flex !important;
+  flex-direction: row !important; /* Iconos en fila horizontal */
+  align-items: center !important;
+  justify-content: flex-start !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+.ftco-intro .wrap .social .social-icon li {
+  display: inline-block !important; /* En fila horizontal */
+  margin: 0 !important;
+  margin-right: 10px !important;
+  padding: 0 10px !important;
+  list-style: none !important;
+  line-height: 0 !important;
+}
+
+.ftco-intro .wrap .social .social-icon li a {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.ftco-intro .wrap .social .social-icon li a span {
+  color: #fff !important;
+  font-size: 20px !important;
+}
+
+/* ====================================
+   FIX 3: Texto de contacto visible
+   Cambiar color del texto de negro a blanco/claro
+   ==================================== */
+.ftco-intro .wrap .info h3,
+.ftco-intro .wrap .info .text h3 {
+  color: #ffffff !important; /* Blanco en lugar de negro */
+  font-weight: 700 !important;
+  margin-bottom: 10px !important;
+}
+
+.ftco-intro .wrap .info p,
+.ftco-intro .wrap .info .text p {
+  color: #cccccc !important; /* Gris claro en lugar de negro */
+  margin-bottom: 0 !important;
+}
+
+.ftco-intro .wrap .icon span {
+  color: #fac564 !important;
+}
+
+/* ====================================
+   FIX 4: Alineación de Pizzas Calientes
+   Asegurar que las imágenes estén bien alineadas
+   ==================================== */
+.services-wrap {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: row !important; /* Mantener en fila */
+  margin-bottom: 30px !important;
+  align-items: stretch !important; /* Estirar items */
+  height: auto !important;
+  min-height: 300px !important;
+}
+
+.services-wrap .img,
+.services-wrap .text {
+  width: 50% !important;
+  height: auto !important;
+}
+
+.services-wrap .img {
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  min-height: 300px !important;
+}
+
+.services-wrap .text {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  padding: 30px !important;
+}
+
+/* Alineación especial para filas pares */
+.services-wrap.order-reverse {
+  flex-direction: row-reverse !important;
+}
+
+/* ====================================
+   AJUSTES RESPONSIVOS
+   ==================================== */
+@media (max-width: 767.98px) {
+  /* En móviles, poner todo en columna */
+  .ftco-about {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  .ftco-about .one-half {
+    width: 100% !important;
+    display: block !important;
+  }
+  
+  .ftco-intro .wrap {
+    display: block !important; /* En móvil, uno debajo del otro */
+    flex-direction: column !important;
+  }
+  
+  .ftco-intro .wrap .info,
+  .ftco-intro .wrap .social {
+    width: 100% !important; /* Ocupar todo el ancho en móvil */
+    display: block !important;
+  }
+  
+  .ftco-intro .wrap .info .row {
+    flex-direction: column !important; /* En móvil, info en columna */
+  }
+  
+  .ftco-intro .wrap .info .col-md-4 {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 20px !important;
+  }
+  
+  .services-wrap {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  .services-wrap .img,
+  .services-wrap .text {
+    width: 100% !important;
+  }
+}
+
+/* ====================================
+   FIX 5: Forzar estilos en TODAS las resoluciones
+   ==================================== */
+@media (min-width: 768px) {
+  /* Sobreescribir media queries del template original */
+  .ftco-about.d-md-flex,
+  .ftco-about {
+    display: flex !important; /* Mantener flex para lado a lado */
+    flex-direction: row !important;
+  }
+  
+  .ftco-about .one-half {
+    width: 50% !important;
+  }
+  
+  .ftco-intro .wrap.d-md-flex {
+    display: flex !important; /* Mantener flex en pantallas grandes */
+    flex-direction: row !important;
+  }
+  
+  .ftco-intro .wrap .info {
+    width: calc(100% - 35%) !important;
+    padding: 2% 5% 2% 12% !important;
+  }
+  
+  .ftco-intro .wrap .social {
+    width: 35% !important;
+    padding-left: 50px !important;
+  }
+}
