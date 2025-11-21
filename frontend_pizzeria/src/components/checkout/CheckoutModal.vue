@@ -119,7 +119,7 @@ const handleConfirmOrder = async () => {
       clienteTelefono: formData.value.telefono,
       clienteNotas: `Delivery - ${formData.value.direccion}, ${formData.value.ciudad}`,
       tipoVenta: formData.value.tipoVenta,
-      estado: 'pendiente',
+      estado: 'confirmada',
       metodoPago: formData.value.metodoPago,
       subtotal: total.value,
       descuento: 0,
@@ -127,14 +127,13 @@ const handleConfirmOrder = async () => {
       notasInternas: formData.value.notasAdicionales || null,
       detalles: cartStore.items.map(item => ({
         idProducto: item.producto.id,
-        nombreProducto: item.producto.nombre,
+        nombreProducto: item.tamaño 
+          ? `${item.producto.nombre} (${item.tamaño})` 
+          : item.producto.nombre,
         cantidad: item.cantidad,
-        precioUnitario: typeof item.producto.precio === 'string' 
-          ? parseFloat(item.producto.precio) 
-          : item.producto.precio,
-        subtotal: (typeof item.producto.precio === 'string' 
-          ? parseFloat(item.producto.precio) 
-          : item.producto.precio) * item.cantidad,
+        precioUnitario: item.precioFinal,
+        subtotal: item.precioFinal * item.cantidad,
+        tamaño: item.tamaño || null,
         notas: item.notas || null
       }))
     }
@@ -172,13 +171,23 @@ const handleConfirmOrder = async () => {
 
   } catch (error: any) {
     console.error('❌ Error al crear venta:', error)
-    toast.error(
-      error.response?.data?.message || 'Error al procesar el pedido. Por favor, intente nuevamente.',
-      {
-        position: 'top-center',
-        timeout: 5000
+    console.error('📋 Detalles del error:', error.response?.data)
+    
+    // Mostrar errores de validación específicos
+    let errorMessage = 'Error al procesar el pedido. Por favor, intente nuevamente.'
+    
+    if (error.response?.data?.message) {
+      if (Array.isArray(error.response.data.message)) {
+        errorMessage = error.response.data.message.join('\n')
+      } else {
+        errorMessage = error.response.data.message
       }
-    )
+    }
+    
+    toast.error(errorMessage, {
+      position: 'top-center',
+      timeout: 8000
+    })
   } finally {
     loading.value = false
   }
@@ -1048,13 +1057,13 @@ const handleClose = () => {
 }
 
 .item-name {
-  color: #2c3e50;
-  font-weight: 500;
+  color: #1a1a1a !important;
+  font-weight: 600;
 }
 
 .item-price {
   font-weight: 700;
-  color: #28a745;
+  color: #1a1a1a !important;
 }
 
 .totals-summary {
@@ -1067,17 +1076,26 @@ const handleClose = () => {
   display: flex;
   justify-content: space-between;
   padding: 8px 0;
-  color: #2c3e50;
-  font-weight: 500;
+  color: #1a1a1a !important;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.total-row span {
+  color: #1a1a1a !important;
 }
 
 .total-final {
   font-size: 18px;
   font-weight: 700;
-  color: #fca100;
+  color: #1a1a1a !important;
   padding-top: 12px;
   border-top: 2px solid #fca100;
   margin-top: 8px;
+}
+
+.total-final span {
+  color: #1a1a1a !important;
 }
 
 /* Footer */
@@ -1105,13 +1123,13 @@ const handleClose = () => {
 .total-label {
   font-size: 14px;
   font-weight: 600;
-  color: #6c757d;
+  color: #1a1a1a !important;
 }
 
 .total-amount {
   font-size: 20px;
   font-weight: 700;
-  color: #28a745;
+  color: #1a1a1a !important;
 }
 
 .footer-right {

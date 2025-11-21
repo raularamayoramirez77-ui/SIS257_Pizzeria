@@ -17,8 +17,8 @@ async function bootstrap() {
   );
 
   const config = new DocumentBuilder()
-    .setTitle('API Pizzeria')
-    .setDescription('API REST para gestión de pizzeria y ventas')
+    .setTitle('API pizzeria')
+    .setDescription('API REST para gestión de ventas')
     .setVersion('1.0')
     .addTag('auth')
     .addTag('empleados')

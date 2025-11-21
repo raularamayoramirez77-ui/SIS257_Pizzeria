@@ -1,0 +1,253 @@
+/* Fix para loader y estilos generales */
+
+/* Asegurar que el loader se oculte */
+#ftco-loader {
+  position: fixed;
+  z-index: 999999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease-out;
+}
+
+#ftco-loader:not(.show) {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* Fix CRÍTICO para el slider - Asegurar que el texto sea visible */
+.home-slider .slider-item {
+  min-height: 100vh !important;
+  display: flex !important;
+  align-items: center !important;
+  position: relative !important;
+}
+
+.home-slider .slider-item .container {
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+.home-slider .slider-text {
+  position: relative !important;
+  z-index: 10 !important;
+  color: #fff !important;
+  min-height: 400px !important;
+}
+
+.home-slider .slider-text h1 {
+  color: #fff !important;
+  font-size: 70px !important;
+  font-weight: 900 !important;
+  line-height: 1.2 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.home-slider .slider-text p {
+  color: rgba(255,255,255,0.9) !important;
+  font-size: 18px !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.home-slider .slider-text .subheading {
+  display: block !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #fac564 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+  margin-bottom: 10px !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.home-slider .btn {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  padding: 12px 30px !important;
+  margin: 5px !important;
+}
+
+.home-slider .btn-primary {
+  background: #fac564 !important;
+  color: #000 !important;
+  border: 2px solid #fac564 !important;
+}
+
+.home-slider .btn-white {
+  background: transparent !important;
+  color: #fff !important;
+  border: 2px solid #fff !important;
+}
+
+/* Fix para imágenes de fondo */
+.home-slider .slider-item {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.home-slider .slider-item .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: '';
+  opacity: 0.3;
+  background: #000000;
+}
+
+/* Fix para el owl carousel */
+.owl-carousel {
+  display: block;
+  width: 100%;
+}
+
+.owl-carousel .owl-stage-outer {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fix para iconos flaticon */
+[class^="flaticon-"]:before, 
+[class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, 
+[class*=" flaticon-"]:after {
+  font-family: Flaticon;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fix para iconos de icomoon */
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Asegurar que las imágenes se carguen */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Fix para gallery images */
+.gallery.img {
+  background-size: cover;
+  background-position: center;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Fix CRÍTICO para ftco-animate y visibilidad general */
+.ftco-animate {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Fix para secciones generales */
+.ftco-section,
+.ftco-intro,
+.ftco-about,
+.ftco-services,
+.ftco-gallery,
+.ftco-counter {
+  display: block !important;
+  visibility: visible !important;
+}
+
+/* Fix para textos en todas las secciones */
+.ftco-section h2,
+.ftco-section h3,
+.ftco-section p,
+.ftco-intro h3,
+.ftco-intro p,
+.ftco-about h2,
+.ftco-about p,
+.ftco-services h3,
+.ftco-services p {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Fix específico para heading-section */
+.heading-section {
+  display: block !important;
+  visibility: visible !important;
+}
+
+.heading-section h2 {
+  font-size: 40px !important;
+  font-weight: 900 !important;
+  color: #000 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Fix para iconos */
+.icon {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.icon span {
+  display: inline-block !important;
+  visibility: visible !important;
+}
+
+/* Fix para overlays */
+.overlay {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: rgba(0,0,0,0.3) !important;
+  z-index: 0 !important;
+}
+
+/* Fix para contadores */
+.block-18 .number {
+  display: block !important;
+  visibility: visible !important;
+  font-size: 50px !important;
+  font-weight: 900 !important;
+  color: #fff !important;
+}
+
+.block-18 span:not(.number) {
+  display: block !important;
+  visibility: visible !important;
+  color: rgba(255,255,255,0.8) !important;
+}

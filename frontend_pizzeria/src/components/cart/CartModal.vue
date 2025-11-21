@@ -112,8 +112,11 @@ const handleClose = () => {
 
                 <!-- Info -->
                 <div class="item-info">
-                  <h4 class="item-name">{{ item.producto.nombre }}</h4>
-                  <p class="item-price">{{ formatPrice(item.producto.precio) }} c/u</p>
+                  <h4 class="item-name">
+                    {{ item.producto.nombre }}
+                    <span v-if="item.tamaño" class="size-badge">{{ item.tamaño }}</span>
+                  </h4>
+                  <p class="item-price">{{ formatPrice(item.precioFinal) }} c/u</p>
                   <p v-if="item.notas" class="item-notes">
                     <i class="fas fa-sticky-note mr-1"></i>
                     {{ item.notas }}
@@ -137,7 +140,7 @@ const handleClose = () => {
                       <i class="fas fa-plus"></i>
                     </button>
                   </div>
-                  <p class="item-subtotal">{{ formatPrice(item.producto.precio * item.cantidad) }}</p>
+                  <p class="item-subtotal">{{ formatPrice(item.precioFinal * item.cantidad) }}</p>
                   <button 
                     class="remove-btn"
                     @click="removeItem(item.producto.id, item.producto.nombre)"
@@ -342,6 +345,19 @@ const handleClose = () => {
   line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.size-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #fca100, #e85a19);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-left: 8px;
+  text-transform: capitalize;
+  vertical-align: middle;
 }
 
 .item-controls {

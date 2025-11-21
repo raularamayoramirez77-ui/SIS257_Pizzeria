@@ -11,7 +11,7 @@ export class EmpleadosController {
   constructor(private readonly empleadosService: EmpleadosService) {}
 
   // NOTA: Descomentar @Public() solo para crear el primer empleado en desarrollo
-  @Public()
+  // @Public()
   @Post()
   create(@Body() createEmpleadoDto: CreateEmpleadoDto) {
     return this.empleadosService.create(createEmpleadoDto);

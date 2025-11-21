@@ -40,4 +40,10 @@ export class CreateDetalleVentaDto {
   @IsOptional()
   @IsString({ message: 'El campo notas debe ser de tipo cadena' })
   readonly notas?: string;
+
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsString({ message: 'El campo tamaño debe ser de tipo cadena' })
+  @MaxLength(50, { message: 'El campo tamaño no debe ser mayor a 50 caracteres' })
+  readonly tamaño?: string;
 }

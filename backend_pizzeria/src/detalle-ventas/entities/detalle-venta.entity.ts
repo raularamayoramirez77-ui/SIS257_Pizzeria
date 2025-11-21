@@ -35,6 +35,9 @@ export class DetalleVenta {
   @Column('text', { nullable: true })
   notas: string;
 
+  @Column('varchar', { length: 50, nullable: true })
+  tamaño: string;
+
   @CreateDateColumn({ name: 'fecha_creacion' })
   fechaCreacion: Date;
 

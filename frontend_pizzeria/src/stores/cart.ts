@@ -5,6 +5,8 @@ import type { Producto } from '@/models/producto'
 export interface CartItem {
   producto: Producto
   cantidad: number
+  tamaño?: string
+  precioFinal: number
   notas?: string
 }
 
@@ -13,10 +15,7 @@ export const useCartStore = defineStore('cart', () => {
 
   const total = computed(() => {
     return items.value.reduce((sum, item) => {
-      const precio = typeof item.producto.precio === 'string' 
-        ? parseFloat(item.producto.precio) 
-        : item.producto.precio
-      return sum + (precio * item.cantidad)
+      return sum + (item.precioFinal * item.cantidad)
     }, 0)
   })
 
@@ -24,14 +23,27 @@ export const useCartStore = defineStore('cart', () => {
     return items.value.reduce((sum, item) => sum + item.cantidad, 0)
   })
 
-  function addItem(producto: Producto, cantidad: number = 1, notas?: string) {
-    const existingItem = items.value.find(item => item.producto.id === producto.id)
+  function addItem(producto: Producto, cantidad: number = 1, tamaño?: string, precioFinal?: number, notas?: string) {
+    // Buscar item con mismo producto Y mismo tamaño
+    const existingItem = items.value.find(item => 
+      item.producto.id === producto.id && item.tamaño === tamaño
+    )
+    
+    const precio = precioFinal || (typeof producto.precio === 'string' 
+      ? parseFloat(producto.precio) 
+      : producto.precio)
     
     if (existingItem) {
       existingItem.cantidad += cantidad
       if (notas) existingItem.notas = notas
     } else {
-      items.value.push({ producto, cantidad, notas })
+      items.value.push({ 
+        producto, 
+        cantidad, 
+        tamaño,
+        precioFinal: precio,
+        notas 
+      })
     }
   }
 

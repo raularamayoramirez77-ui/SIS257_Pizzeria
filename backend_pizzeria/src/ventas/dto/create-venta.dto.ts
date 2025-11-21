@@ -36,6 +36,12 @@ export class CreateDetalleVentaDto {
   @IsOptional()
   @IsString({ message: 'Las notas deben ser una cadena' })
   readonly notas?: string;
+
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsString({ message: 'El tamaño debe ser una cadena' })
+  @MaxLength(50, { message: 'El tamaño no debe ser mayor a 50 caracteres' })
+  readonly tamaño?: string;
 }
 
 export class CreateVentaDto {
